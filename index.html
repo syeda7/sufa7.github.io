@@ -703,7 +703,7 @@ Master's Student | Software Engineer with 2+ Years Experience | Volunteer at Ame
     const stripe = Stripe("pk_test_51R8t3n03ejpZ5k7Br46BnCpYbBBpd0oQ72GEjf0dTmyWgsjGx56BdW1rCOMUCqGTjrQPv42qXfkUrYpnGDSFAqjV00QGKS03RJ"); // Replace with your Stripe Public Key
 
     document.getElementById("checkout-button").addEventListener("click", async () => {
-      const response = await fetch("/create-checkout-session", { method: "POST" });
+      const response = await fetch("/create-checkout-session.js", { method: "POST" });
       const session = await response.json();
       stripe.redirectToCheckout({ sessionId: session.id });
     });
