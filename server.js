@@ -23,8 +23,8 @@ app.post("/create-checkout-session", async (req, res) => {
                 },
             ],
             mode: "payment",
-            success_url: "https://your-portfolio.com/success.html",
-            cancel_url: "https://your-portfolio.com/cancel.html",
+            success_url: "https://syeda7.github.io/sufa7.github.io/success.html",
+            cancel_url: "https://syeda7.github.io/sufa7.github.io/cancel.html",
         });
 
         res.json({ id: session.id });
