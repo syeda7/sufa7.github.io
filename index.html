@@ -690,26 +690,23 @@ Master's Student | Software Engineer with 2+ Years Experience | Volunteer at Ame
               </div>
               <button type="submit" class="btn btn-cta">Send</button>
             </form>
-            <form action="process_payment.php" method="POST">
-  <div class="form-field">
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name" required />
-  </div>
-  <div class="form-field">
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" required />
-  </div>
-  <div class="form-field">
-    <label for="message">How can I help you?</label>
-    <textarea name="message" id="message" required></textarea>
-  </div>
-  <button type="submit" class="btn btn-cta">Send</button>
-</form>
+              
+             <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+  <h1>Support My Work</h1>
+  <p>If you’d like to support my projects, you can make a donation below.</p>
 
-<!-- Stripe Payment Button -->
-<form action="checkout.php" method="POST">
-  <button type="submit" class="btn btn-cta">Pay Now</button>
-</form>
+  <button id="checkout-button">Pay Now</button>
+
+  <script>
+    const stripe = Stripe("pk_test_51R8t3n03ejpZ5k7Br46BnCpYbBBpd0oQ72GEjf0dTmyWgsjGx56BdW1rCOMUCqGTjrQPv42qXfkUrYpnGDSFAqjV00QGKS03RJ"); // Replace with your Stripe Public Key
+
+    document.getElementById("checkout-button").addEventListener("click", async () => {
+      const response = await fetch("/create-checkout-session", { method: "POST" });
+      const session = await response.json();
+      stripe.redirectToCheckout({ sessionId: session.id });
+    });
 
           </div>
         </div>
