@@ -690,7 +690,6 @@ Master's Student | Software Engineer with 2+ Years Experience | Volunteer at Ame
               </div>
               <button type="submit" class="btn btn-cta">Send</button>
             </form>
-              
              <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
@@ -703,11 +702,30 @@ Master's Student | Software Engineer with 2+ Years Experience | Volunteer at Ame
     const stripe = Stripe("pk_test_51R8t3n03ejpZ5k7Br46BnCpYbBBpd0oQ72GEjf0dTmyWgsjGx56BdW1rCOMUCqGTjrQPv42qXfkUrYpnGDSFAqjV00QGKS03RJ"); // Replace with your Stripe Public Key
 
     document.getElementById("checkout-button").addEventListener("click", async () => {
-      const response = await fetch("/create-checkout-session.js", { method: "POST" });
-      const session = await response.json();
-      stripe.redirectToCheckout({ sessionId: session.id });
-    });
+      try {
+        const response = await fetch("/create-checkout-session", { 
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+        });
 
+        if (!response.ok) {
+          throw new Error("Failed to create checkout session");
+        }
+
+        const session = await response.json();
+
+        if (!session.id) {
+          throw new Error("Session ID not found");
+        }
+
+        await stripe.redirectToCheckout({ sessionId: session.id });
+
+      } catch (error) {
+        console.error("Error:", error.message);
+        alert("Payment failed! Check console for more details.");
+      }
+    });
+  </head>
           </div>
         </div>
       </section>
