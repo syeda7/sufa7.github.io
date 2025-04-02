@@ -689,48 +689,65 @@ Master's Student | Software Engineer with 2+ Years Experience | Volunteer at Ame
                 <textarea name="message" id="message" required></textarea>
               </div>
               <button type="submit" class="btn btn-cta">Send</button>
-            </form>
-             <script src="https://js.stripe.com/v3/"></script>
-</head>
-<body>
-  <h1>Support My Work</h1>
-  <p>If you’d like to support my projects, you can make a donation below.</p>
-
-  <button id="checkout-button">Pay Now</button>
-
-  <script>
-    const stripe = Stripe("pk_test_51R8t3n03ejpZ5k7Br46BnCpYbBBpd0oQ72GEjf0dTmyWgsjGx56BdW1rCOMUCqGTjrQPv42qXfkUrYpnGDSFAqjV00QGKS03RJ"); // Replace with your Stripe Public Key
-
-    document.getElementById("checkout-button").addEventListener("click", async () => {
-      try {
-        const response = await fetch("https://sufa7-github-io.onrender.com", { 
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-});
-
-        if (!response.ok) {
-          throw new Error("Failed to create checkout session");
-        }
-
-        const session = await response.json();
-
-        if (!session.id) {
-          throw new Error("Session ID not found");
-        }
-
-        await stripe.redirectToCheckout({ sessionId: session.id });
-
-      } catch (error) {
-        console.error("Error:", error.message);
-        alert("Payment failed! Check console for more details.");
-      }
-    });
-  </head>
-    </script>
+            
+   
+       
+  
           </div>
         </div>
       </section>
     </main>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support My Work</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        form { margin: 20px auto; max-width: 400px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+        input, button { width: 100%; padding: 10px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>Support My Work</h1>
+    <p>Enter your details to make a donation.</p>
+
+    <form id="payment-form">
+        <input type="email" id="email" placeholder="Your Email" required>
+        <input type="number" id="amount" placeholder="Enter Amount (USD)" required>
+        <button type="button" id="checkout-button">Pay Now</button>
+    </form>
+
+    <script>
+        const stripe = Stripe("pk_test_51R8t3n03ejpZ5k7Br46BnCpYbBBpd0oQ72GEjf0dTmyWgsjGx56BdW1rCOMUCqGTjrQPv42qXfkUrYpnGDSFAqjV00QGKS03RJ"); // Replace with your Stripe Publishable Key
+
+        document.getElementById("checkout-button").addEventListener("click", async () => {
+            const email = document.getElementById("email").value;
+            const amount = document.getElementById("amount").value * 100; // Convert to cents
+
+            if (!email || !amount) {
+                alert("Please enter a valid email and amount.");
+                return;
+            }
+
+            const response = await fetch("https://sufa7-github-io.onrender.com/create-checkout-session", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, amount }),
+            });
+
+            const session = await response.json();
+            if (session.id) {
+                stripe.redirectToCheckout({ sessionId: session.id });
+            } else {
+                alert("Error: " + session.error);
+            }
+        });
+    </script>
+
+</body>
+</html>
 
     <footer class="footer">
       <div class="container">
