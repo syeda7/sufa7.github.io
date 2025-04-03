@@ -1,0 +1,8 @@
+# Ignore a specific file
+secrets.txt
+
+# Ignore a folder
+index.html
+
+# Ignore all .env files
+*.env
