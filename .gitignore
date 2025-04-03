@@ -3,6 +3,7 @@ secrets.txt
 
 # Ignore a folder
 index.html
+server.js
 
 # Ignore all .env files
 *.env
