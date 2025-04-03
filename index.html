@@ -662,13 +662,7 @@ Master's Student | Software Engineer with 2+ Years Experience | Volunteer at Ame
                 digital art with my iPad Pro.
               </p>
               <!-- Replace src with your signatures and name -->
-              <img
-                src="assets/images/signatures.png"
-                alt="Syeds"
-                class="signatures"
-                loading="lazy"
-              />
-             <form action="https://formspree.io/f/mldjwygn" method="POST" class="contact-form" netlify>
+               <form action="https://formspree.io/f/mldjwygn" method="POST" class="contact-form" netlify>
                <div class="form-field">
                  <label for="name">name</label>
                  <input type="text" name="name" id="name" required />
@@ -693,6 +687,34 @@ Master's Student | Software Engineer with 2+ Years Experience | Volunteer at Ame
         </div>
       </section>
     </main>
+              <img
+                src="assets/images/signatures.png"
+                alt="Syeds"
+                class="signatures"
+                loading="lazy"
+              />
+            
+    <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Support My Work</title>
+     <script src="https://js.stripe.com/v3/"></script>
+     <style>
+         body { font-family: Arial, sans-serif; text-align: center; }
+         form { margin: 20px auto; max-width: 400px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+         input, button { width: 100%; padding: 10px; margin-top: 10px; }
+     </style>
+ </head>
+ <body>
+ 
+     <h1>Contact for Events</h1>
+     <p>Enter your details to make a Payment.</p>
+ 
+     <form id="payment-form">
+         <input type="email" id="email" name="email" required placeholder="Enter your email">
+         <input type="number" id="amount" name="amount" min="1" step="0.01" required placeholder="Enter amount in dollars">
+         <button type="button" id="checkout-button">Pay Now</button>
+     </form>
      
 
     <footer class="footer">
