@@ -724,7 +724,7 @@ Master's Student | Software Engineer with 2+ Years Experience | Volunteer at Ame
 
         document.getElementById("checkout-button").addEventListener("click", async () => {
             const email = document.getElementById("email").value;
-            const amount = document.getElementById("amount").value * 100; // Convert to cents
+            const amount = document.getElementById("amount").value; // Convert to cents
 
             if (!email || !amount) {
                 alert("Please enter a valid email and amount.");
