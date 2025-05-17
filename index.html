@@ -641,44 +641,48 @@ Master's Student | Software Engineer with 2+ Years Experience | Volunteer at Ame
         </div>
       </section>
 
-      <section class="contact">
-        <div class="container">
-          <h2 class="h2" id="contact">Send Message</h2>
-          <div class="contact-content">
-            <div class="contact-textbox">
-              <!-- Please comment this component if you're not available for hire -->
-              <strong href="#" class="hire-alert">
-                <span class="indicator"></span>
-                Available for hire
-              </strong>
-              <p class="contact-text">
-                As a software engineer, I construct web interfaces and design
-                systems with a special love for accessibility and the
-                performance. I tend to code things from scratch and enjoy
-                bringing ideas to life.
-              </p>
-              <p class="contact-text">
-                I'm also an open-source developer, and in my spare time, I do
-                digital art with my iPad Pro.
-              </p>
-              <!-- Replace src with your signatures and name -->
-              <img
-                src="assets/images/signatures.png"
-                alt="Syeds"
-                class="signatures"
-                loading="lazy"
-              />
-              <li class="contact">
-  <!-- Jotform Embed -->
-  <iframe
-    src="https://form.jotform.com/251364115532045"
-    frameborder="0"
-    style="width:100%; height:700px; border:none;"
-    allowfullscreen
-  >
-  </iframe>
-</li>
-    
+      <div class="container">
+  <section class="contact">
+    <h2 class="h2" id="contact">Send Message</h2>
+
+    <!-- Flex container for side-by-side layout -->
+    <div class="contact-content" style="display: flex; gap: 2rem; flex-wrap: wrap;">
+      
+      <!-- Left: Contact Text Box -->
+      <div class="contact-textbox" style="flex: 1 1 45%;">
+        <!-- Please comment this component if you're not available for hire -->
+        <strong href="https://www.linkedin.com/in/uzra-fatima-syeda-034976192/" class="hire-alert">
+          <span class="indicator"></span>
+          Available for hire
+        </strong>
+        <p class="contact-text">
+          As a software engineer, I construct web interfaces and design systems with a special love for accessibility and performance. I tend to code things from scratch and enjoy bringing ideas to life.
+        </p>
+        <p class="contact-text">
+          I'm also an open-source developer, and in my spare time, I do digital art with my iPad Pro.
+        </p>
+        <img
+          src="assets/images/signatures.png"
+          alt="Syeds"
+          class="signatures"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Right: Embedded Jotform -->
+      <div class="contact-form" style="flex: 1 1 50%;">
+        <iframe
+          src="https://form.jotform.com/251364115532045"
+          frameborder="0"
+          style="width: 100%; height: 700px; border: none;"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+    </div>
+  </section>
+</div>
+
               <!-- <form action="https://formspree.io/f/mldjwygn" method="POST" class="contact-form" netlify>
                <div class="form-field">
                  <label for="name">name</label>
